@@ -10,6 +10,7 @@
     <string name="notice_cat">HUNT AND DESTROY!</string>
     <string name="notice_win">YOU WIN!\n%1$d - %2$d</string>
     <string name="notice_lose">YOU LOSE!\n%1$d - %2$d</string>
+    <string name="notice_draw">IT’S A DRAW!\n%1$d - %2$d</string>
 
     <string name="err_wrong_network_version">You and your friend are using different versions of the game. Please update to the latest version.”</string>
     <string name="err_session_full">This game is full — 2 players are already connected.</string>

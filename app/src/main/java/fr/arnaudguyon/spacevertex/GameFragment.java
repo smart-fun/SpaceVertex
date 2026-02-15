@@ -307,7 +307,13 @@ public class GameFragment extends Fragment implements GameConnection.MessageList
                     updateNotice(text, getResources().getColor(R.color.svRed));
                     displayQuitRestartButtons();
                 } else {
-                    // Wait for next score update !
+                    Sounds.getInstance(getActivity()).playWin();
+                    String format = getString(R.string.notice_draw);
+                    String text = String.format(format, mLocalWins, mRemoteWins);
+                    updateNotice(text, getResources().getColor(R.color.svGreyText));
+                    if(mShipLocal.hasBoost()){
+                        displayQuitRestartButtons();
+                    }
                 }
             } else if (mDisplayNotice > 0) {    // NOTICE / RULES
                 --mDisplayNotice;
