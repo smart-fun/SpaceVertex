@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 35
+    compileSdkVersion 36
 
     defaultConfig {
         applicationId "fr.arnaudguyon.spacevertex"
-        minSdkVersion 21
-        targetSdkVersion 35
+        minSdkVersion 23
+        targetSdkVersion 36
         versionCode 29
         versionName "1.1.7-29"
     }
@@ -49,9 +49,9 @@ configurations.configureEach {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.aar'])
 
-    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
     implementation 'androidx.vectordrawable:vectordrawable-animated:1.2.0'
-    implementation 'androidx.media:media:1.7.1'
+    implementation 'androidx.media:media:1.8.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation "org.java-websocket:Java-WebSocket:1.3.0"    // breaking change on later versions
