@@ -11,6 +11,7 @@ import android.util.Log;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.exceptions.WebsocketNotConnectedException;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.handshake.ServerHandshake;
@@ -22,6 +23,7 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 import fr.arnaudguyon.spacevertex.network.wifi.WifiGameDevice;
@@ -156,7 +158,7 @@ public abstract class WebSocketHelper implements GameConnection {
 
             InetSocketAddress address = new InetSocketAddress(port);
 
-            mSocketServer = new WebSocketServer(address) {
+            mSocketServer = new WebSocketServer(address, Collections.singletonList(new Draft_6455())) {
                 @Override
                 public void onOpen(WebSocket connection, ClientHandshake handshake) {
                     Log.d(TAG, "onOpen " + connection);
@@ -178,6 +180,11 @@ public abstract class WebSocketHelper implements GameConnection {
                     if (listener != null) {
                         listener.onPlayerLeft(SocketServer.this, new WifiGameDevice(connection));
                     }
+                }
+
+                @Override
+                public void onStart() {
+                    Log.d(TAG, "onStart");
                 }
 
                 @Override
@@ -217,7 +224,7 @@ public abstract class WebSocketHelper implements GameConnection {
         protected void close() {
             try {
                 mSocketServer.stop();
-            } catch (IOException|InterruptedException e) {
+            } catch (InterruptedException e) {
                 Log.e(TAG, "SocketServer error " + e.getMessage());
             }
         }
