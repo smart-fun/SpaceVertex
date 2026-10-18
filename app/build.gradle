@@ -13,6 +13,10 @@ android {
         versionName "1.1.7-29"
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
         debug {
             buildConfigField "Boolean", "DEBUG_NETWORK", "true"
